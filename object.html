@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Object Detection & Tracking</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app">
+  <h1>🎯 Object Detection & Tracking</h1>
+  <p class="sub">Webcam feed → COCO-SSD detection → simple centroid tracker with persistent IDs, all in the browser.</p>
+
+  <div class="stage">
+    <video id="video" autoplay playsinline muted></video>
+    <canvas id="overlay"></canvas>
+  </div>
+
+  <div class="controls">
+    <button id="startBtn">Start Camera</button>
+    <button id="stopBtn" class="secondary" disabled>Stop</button>
+    <label style="font-size:13px;color:var(--muted);">Confidence
+      <select id="confSel">
+        <option value="0.3">30%</option>
+        <option value="0.5" selected>50%</option>
+        <option value="0.7">70%</option>
+      </select>
+    </label>
+    <span class="status" id="status">Model not loaded yet...</span>
+  </div>
+
+  <div class="stats">
+    <span>Objects tracked: <b id="objCount">0</b></span>
+    <span>FPS: <b id="fps">0</b></span>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.20.0/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd@2.2.3/dist/coco-ssd.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
